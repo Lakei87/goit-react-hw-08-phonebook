@@ -1,11 +1,13 @@
-// import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
+import styles from './contactItem.module.css';
 
 const ContactItem = ({ name, number, onBtnClick }) => {
     return (
-        <li className="contactList__item">
-            <p>{name}:</p>
-            <p>{number}</p>
+        <li className={styles.contactList__item}>
+            <p className={styles.contactList__name}>{name}:</p>
+            <p className={styles.contactList__number}>{number}</p>
             <button
+                className={styles.contactList__btn}
                 type="button"
                 onClick={onBtnClick}
             >
@@ -15,9 +17,10 @@ const ContactItem = ({ name, number, onBtnClick }) => {
     )
 };
 
-// ContactItem.propTypes = {
-//     name: PropTypes.string.isRequired,
-//     number: PropTypes.string.isRequired,
-// };
+ContactItem.propTypes = {
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    onBtnClick: PropTypes.func.isRequired,
+}
 
 export default ContactItem;
