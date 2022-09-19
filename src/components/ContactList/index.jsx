@@ -1,6 +1,6 @@
 import ContactItem from "components/ContactItem";
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onBtnClick }) => {
     console.log(contacts)
     return (
         <ul className="contactList">
@@ -9,6 +9,7 @@ const ContactList = ({ contacts }) => {
                     key={id}
                     name={name}
                     number={number}
+                    onBtnClick={() => onBtnClick(id)}
                 />
             })}
         </ul>
