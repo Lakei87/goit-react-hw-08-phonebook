@@ -12,8 +12,13 @@ const contactsSlice = createSlice({
     initialState: contactsInitialState,
     reducers: {
         addConcact: {
-            reducer(state, action) {
-                state.push(action.payload);
+            reducer(state, { payload }) {
+                // we check the availability of a contact in the phonebook
+                const isContactInList = state.some(({ name }) => name.toLowerCase() === payload.name.toLowerCase());
+
+                if (isContactInList) {
+                    return alert(`${payload.name} is already in contacts`);
+                } else state.push(payload);
             },
             prepare(name, number) {
                 return {
