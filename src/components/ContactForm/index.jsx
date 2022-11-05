@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addConcact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import styles from './contactForm.module.css';
 
 export default function ContactForm() {
@@ -9,7 +9,10 @@ export default function ContactForm() {
         e.preventDefault();
         const form = e.target;
         const { name, number } = form.elements;
-        dispatch(addConcact(name.value, number.value));
+        dispatch(addContact({
+            name: name.value,
+            number: number.value
+        }));
         form.reset();
     };
 
