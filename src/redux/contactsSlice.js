@@ -36,7 +36,6 @@ const contactsSlice = createSlice({
 
         [deleteContact.pending]: handlePending,
         [deleteContact.fulfilled](state, { payload }) {
-            console.log(payload.id)
             state.isLoading = false;
             state.error = null;
             const index = state.items.findIndex(
@@ -46,30 +45,6 @@ const contactsSlice = createSlice({
         },
         [deleteContact.rejected]: handleRejected,
     },
-    // reducers: {
-    //     addConcact: {
-    //         reducer(state, { payload }) {
-    //             // we check the availability of a contact in the phonebook
-                // const isContactInList = state.some(({ name }) => name.toLowerCase() === payload.name.toLowerCase());
-
-                // if (isContactInList) {
-                //     return alert(`${payload.name} is already in contacts`);
-                // } else state.push(payload);
-    //         },
-    //         prepare(name, number) {
-    //             return {
-    //                 payload: {
-    //                     id: nanoid(),
-    //                     name,
-    //                     number,
-    //                 }
-    //             };
-    //         },
-    //     },
-    //     deleteContact(state, { payload }) {
-    //         return state.filter(({id}) => id !== payload);
-    //     },
-    // },
 });
 
 export const contactsReducer = contactsSlice.reducer;

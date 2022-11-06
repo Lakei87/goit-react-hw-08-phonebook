@@ -16,15 +16,17 @@ export default function ContactForm() {
             contact.name.toLowerCase() === name.value.toLowerCase());
         
         if (isContactInList) {
+            name.focus();
             return (Notify.info(`${name.value} is already in contacts`))
         } else {
             dispatch(addContact({
                 name: name.value,
-                number: number.value
+                number: number.value,
             }));
         };
 
         form.reset();
+        name.focus();
     };
 
     return (
@@ -32,6 +34,7 @@ export default function ContactForm() {
             <label>
                 Name
                 <input
+                    autoFocus="autofocus"
                     className={styles.contactForm__input}
                     type="text"
                     name="name"
