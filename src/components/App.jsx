@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Notification from './Notification';
 import Filter from './Filter';
 import { Box } from './Box';
 import { fetchContacts } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 export default function App() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  console.log(contacts)
 
   useEffect(() => {
     dispatch(fetchContacts());
