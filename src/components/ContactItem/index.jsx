@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
-import { selectIsLoading } from 'redux/selectors';
 import styles from './contactItem.module.css';
 
 export default function ContactItem({ contact }) {
     const { name, number, id } = contact;
     const dispatch = useDispatch();
-    const isLoading = useSelector(selectIsLoading);
 
     const handleDelete = () => dispatch(deleteContact(id))
     
@@ -20,11 +18,7 @@ export default function ContactItem({ contact }) {
                 type="button"
             onClick={handleDelete}
             >
-                {isLoading ? (
-                    "Loading..."
-                ) : (
-                        "Delete"
-                )}
+                Delete
             </button>
         </li>
     );
