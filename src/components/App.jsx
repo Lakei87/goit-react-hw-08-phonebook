@@ -1,22 +1,22 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Notification from './Notification';
-import Filter from './Filter';
-import { Box } from './Box';
+import { useDispatch } from 'react-redux';
+// import { Loading } from 'notiflix/build/notiflix-loading-aio';
+// import ContactForm from './ContactForm';
+// import ContactList from './ContactList';
+// import Notification from './Notification';
+// import Filter from './Filter';
+// import { Box } from './Box';
 import Home from './Home';
 import { fetchContacts } from 'redux/operations';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
+// import { selectContacts, selectIsLoading } from 'redux/selectors';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 
 export default function App() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
+  // const contacts = useSelector(selectContacts);
+  // const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
