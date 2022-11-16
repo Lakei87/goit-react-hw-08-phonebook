@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 // import Filter from './Filter';
 // import { Box } from './Box';
 import Home from './Home';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 // import { selectContacts, selectIsLoading } from 'redux/selectors';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
