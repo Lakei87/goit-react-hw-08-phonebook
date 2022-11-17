@@ -1,53 +1,49 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-// import { Loading } from 'notiflix/build/notiflix-loading-aio';
-// import ContactForm from './ContactForm';
-// import ContactList from './ContactList';
-// import Notification from './Notification';
-// import Filter from './Filter';
-// import { Box } from './Box';
-import Home from './Home';
-import { fetchContacts } from 'redux/contacts/operations';
-// import { selectContacts, selectIsLoading } from 'redux/selectors';
-import RegisterForm from './RegisterForm';
-import LoginForm from './LoginForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import { refreshUser } from 'redux/auth/operations';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export default function App() {
   const dispatch = useDispatch();
-  // const contacts = useSelector(selectContacts);
-  // const isLoading = useSelector(selectIsLoading);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Suspense>
       <Routes>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='/register' element={<RegisterForm/>}></Route>
-        <Route path='/login' element={<LoginForm/>}></Route>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route
+          path='/register'
+          element={
+            <RestrictedRoute redirectTo='/contacts' component={<RegisterPage />} />
+          }>
+        </Route>
+        <Route
+          path='/login'
+          element={
+            <RestrictedRoute redirectTo='/contacts' component={<LoginPage />} />
+          }>
+        </Route>
+        <Route
+          path='/contacts'
+          element={
+            <PrivateRoute redirectTo='/login' component={<ContactsPage />} />
+          }>
+        </Route>
       </Routes>
-      {/* <Box textAlign='center'>
-        <h1>Phonebook</h1>
-
-        <ContactForm/>
-        <h2>Contacts</h2>
-        {contacts.length === 0
-          ? (<Notification message={'Phonebook is empty. You can add a new contact.'} />)
-          : <>
-            <Filter/>
-            <ContactList/>
-          </>}
-        {isLoading
-          ? Loading.circle('Loading...',{
-            backgroundColor: 'rgba(0,0,0,0.8)',
-            svgSize: '40px',
-          })
-          : Loading.remove()
-        }
-      </Box> */}
-    </>
+    </Suspense>
   );
 };

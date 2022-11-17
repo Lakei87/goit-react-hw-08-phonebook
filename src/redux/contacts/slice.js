@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logOut } from "redux/auth/operations";
 import { fetchContacts, addContact, deleteContact } from "./operations";
 
 const handlePending = state => {
@@ -16,6 +17,7 @@ export const contactsSlice = createSlice({
         items: [],
         filter: '',
         isLoading: false,
+        isLoadingNewContact: false,
     },
     reducers: {
         setFilter(state, { payload }) {
@@ -24,20 +26,26 @@ export const contactsSlice = createSlice({
     },
     extraReducers: {
         [fetchContacts.pending]: handlePending,
+        [addContact.pending]: handlePending,
+        [addContact.pending](state, _) {
+            state.isLoadingNewContact = true;  
+        },
+        [deleteContact.pending]: handlePending,
+        [fetchContacts.rejected]: handleRejected,
+        [deleteContact.rejected]: handleRejected,
+        [addContact.rejected]: handleRejected,
+
         [fetchContacts.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.items = payload;
         },
-        [fetchContacts.rejected]: handleRejected,
 
-        [addContact.pending]: handlePending,
         [addContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.items.push(payload);
+            state.isLoadingNewContact = false;
         },
-        [addContact.rejected]: handleRejected,
 
-        [deleteContact.pending]: handlePending,
         [deleteContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             const index = state.items.findIndex(
@@ -45,7 +53,10 @@ export const contactsSlice = createSlice({
             );
             state.items.splice(index, 1);
         },
-        [deleteContact.rejected]: handleRejected,
+        [logOut.fulfilled](state) {
+            state.items = [];
+            state.isLoading = false;
+        },
     },
 });
 
