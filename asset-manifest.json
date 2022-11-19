@@ -1,25 +1,32 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.c3cf56ba.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.096e9841.js",
-    "static/js/734.3faa9ff6.chunk.js": "/goit-react-hw-08-phonebook/static/js/734.3faa9ff6.chunk.js",
-    "static/js/804.24b2f152.chunk.js": "/goit-react-hw-08-phonebook/static/js/804.24b2f152.chunk.js",
-    "static/js/177.f47cc05c.chunk.js": "/goit-react-hw-08-phonebook/static/js/177.f47cc05c.chunk.js",
-    "static/css/425.b6e12e8e.chunk.css": "/goit-react-hw-08-phonebook/static/css/425.b6e12e8e.chunk.css",
-    "static/js/425.9a85fdc9.chunk.js": "/goit-react-hw-08-phonebook/static/js/425.9a85fdc9.chunk.js",
-    "static/js/82.b5997f5f.chunk.js": "/goit-react-hw-08-phonebook/static/js/82.b5997f5f.chunk.js",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.f460d32d.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.a74a633f.js",
+    "static/js/965.277bd69b.chunk.js": "/goit-react-hw-08-phonebook/static/js/965.277bd69b.chunk.js",
+    "static/js/49.78132bab.chunk.js": "/goit-react-hw-08-phonebook/static/js/49.78132bab.chunk.js",
+    "static/js/252.088e0304.chunk.js": "/goit-react-hw-08-phonebook/static/js/252.088e0304.chunk.js",
+    "static/js/419.42b1c9bf.chunk.js": "/goit-react-hw-08-phonebook/static/js/419.42b1c9bf.chunk.js",
+    "static/css/421.39e2cb6b.chunk.css": "/goit-react-hw-08-phonebook/static/css/421.39e2cb6b.chunk.css",
+    "static/js/421.d2d9ffe7.chunk.js": "/goit-react-hw-08-phonebook/static/js/421.d2d9ffe7.chunk.js",
+    "static/js/435.5cbf83cf.chunk.js": "/goit-react-hw-08-phonebook/static/js/435.5cbf83cf.chunk.js",
+    "static/js/621.c7ffbdf6.chunk.js": "/goit-react-hw-08-phonebook/static/js/621.c7ffbdf6.chunk.js",
+    "static/js/128.f21606f6.chunk.js": "/goit-react-hw-08-phonebook/static/js/128.f21606f6.chunk.js",
+    "static/media/phone-icon.png": "/goit-react-hw-08-phonebook/static/media/phone-icon.962225b56cbb60e72937.png",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.c3cf56ba.css.map": "/goit-react-hw-08-phonebook/static/css/main.c3cf56ba.css.map",
-    "main.096e9841.js.map": "/goit-react-hw-08-phonebook/static/js/main.096e9841.js.map",
-    "734.3faa9ff6.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/734.3faa9ff6.chunk.js.map",
-    "804.24b2f152.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/804.24b2f152.chunk.js.map",
-    "177.f47cc05c.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/177.f47cc05c.chunk.js.map",
-    "425.b6e12e8e.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/425.b6e12e8e.chunk.css.map",
-    "425.9a85fdc9.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/425.9a85fdc9.chunk.js.map",
-    "82.b5997f5f.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/82.b5997f5f.chunk.js.map"
+    "main.f460d32d.css.map": "/goit-react-hw-08-phonebook/static/css/main.f460d32d.css.map",
+    "main.a74a633f.js.map": "/goit-react-hw-08-phonebook/static/js/main.a74a633f.js.map",
+    "965.277bd69b.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/965.277bd69b.chunk.js.map",
+    "49.78132bab.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/49.78132bab.chunk.js.map",
+    "252.088e0304.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/252.088e0304.chunk.js.map",
+    "419.42b1c9bf.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/419.42b1c9bf.chunk.js.map",
+    "421.39e2cb6b.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/421.39e2cb6b.chunk.css.map",
+    "421.d2d9ffe7.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/421.d2d9ffe7.chunk.js.map",
+    "435.5cbf83cf.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/435.5cbf83cf.chunk.js.map",
+    "621.c7ffbdf6.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/621.c7ffbdf6.chunk.js.map",
+    "128.f21606f6.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/128.f21606f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3cf56ba.css",
-    "static/js/main.096e9841.js"
+    "static/css/main.f460d32d.css",
+    "static/js/main.a74a633f.js"
   ]
 }
