@@ -14,3 +14,14 @@ export const MainWrap = styled.main`
     height: 100vh;
     align-items: center;
 `;
+
+export const FormWrap = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    text-align: center;
+
+    & div{
+        margin-bottom: 5px;
+    }
+`;

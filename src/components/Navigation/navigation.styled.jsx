@@ -11,7 +11,7 @@ export const Link = styled(NavLink)`
     }
 `;
 
-export const Text = styled.p`
-    font-size: 30px;
-    font-weight: 700;
+export const Logo = styled.p`
+    font-size: 25px;
+    font-weight: 500;
 `;

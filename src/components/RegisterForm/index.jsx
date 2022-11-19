@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
+import { TextField, Button } from "@mui/material";
 import { register } from "redux/auth/operations";
+import { FormWrap } from "components/Box";
+import { FormTitle, Proposition, Link } from "./registerForm.styled";
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -21,20 +24,47 @@ export default function RegisterForm() {
 
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <FormWrap
+      onSubmit={handleSubmit}
+      autoComplete="off">
+      <FormTitle>
+        Please register
+      </FormTitle>
+      <TextField
+        id="outlined-basic"
+        label="Username"
+        variant="outlined"
+        required={true}
+        type="text"
+        name="name"
+      />
+      <TextField
+        id="outlined-basic"
+        label="Email"
+        variant="outlined"
+        required={true}
+        type="email"
+        name="email"
+      />
+      <TextField
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
+        required={true}
+        type="password"
+        name="password"
+      />
+      <Button
+        type="submit"
+        variant="contained">
+        Register
+      </Button>
+      <Proposition>
+        Alresdy have an account? Please login
+        <Link to='/login'>
+          HERE
+        </Link>
+      </Proposition>
+    </FormWrap>
   );
 };
