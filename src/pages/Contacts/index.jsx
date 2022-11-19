@@ -1,21 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectStatus } from 'redux/contacts/selectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Notification from 'components/Notification';
 import Filter from 'components/Filter';
 import { Box } from 'components/Box';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { useState } from 'react';
 
 export default function Contacts() {
-    // const [status, setStatus] = useState(null);
     const contacts = useSelector(selectContacts);
     const dispatch = useDispatch();
     const statusState = useSelector(selectStatus);
-    // console.log(status)
 
     useEffect(() => {
         dispatch(fetchContacts())
@@ -24,14 +21,13 @@ export default function Contacts() {
     const getStatus = (status) => {
         switch (status) {
             case 201:
-                Notify.success('add contact');
+                Notify.success('The contact was successfully created');
                 break;
-            case 400:
-                Notify.failure('Error creating contact');
+            case 200:
+                Notify.success('The contact was successfully deleted');
                 break;
             default:
                 return;
-                
         };
     };
 

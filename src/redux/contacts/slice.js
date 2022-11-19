@@ -56,6 +56,7 @@ export const contactsSlice = createSlice({
                 ({ id }) => id === payload.data.id
             );
             state.items.splice(index, 1);
+            state.status = payload.status;
         },
         [logOut.fulfilled](state) {
             state.items = [];
