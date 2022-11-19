@@ -8,7 +8,9 @@ const handlePending = state => {
 
 const handleRejected = (state, { payload }) => {
     state.isLoading = false;
-    state.error = payload;
+    state.error = payload.data;
+    state.isAddingContact = false;
+    state.status = payload.status;
 };
 
 export const contactsSlice = createSlice({
@@ -17,7 +19,8 @@ export const contactsSlice = createSlice({
         items: [],
         filter: '',
         isLoading: false,
-        isLoadingNewContact: false,
+        isAddingContact: false,
+        status: null,
     },
     reducers: {
         setFilter(state, { payload }) {
@@ -28,7 +31,7 @@ export const contactsSlice = createSlice({
         [fetchContacts.pending]: handlePending,
         [addContact.pending]: handlePending,
         [addContact.pending](state, _) {
-            state.isLoadingNewContact = true;  
+            state.isAddingContact = true;
         },
         [deleteContact.pending]: handlePending,
         [fetchContacts.rejected]: handleRejected,
@@ -37,25 +40,27 @@ export const contactsSlice = createSlice({
 
         [fetchContacts.fulfilled](state, { payload }) {
             state.isLoading = false;
-            state.items = payload;
+            state.items = payload.data;
         },
 
         [addContact.fulfilled](state, { payload }) {
             state.isLoading = false;
-            state.items.push(payload);
-            state.isLoadingNewContact = false;
+            state.items.push(payload.data);
+            state.isAddingContact = false;
+            state.status = payload.status;
         },
 
         [deleteContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             const index = state.items.findIndex(
-                ({ id }) => id === payload.id
+                ({ id }) => id === payload.data.id
             );
             state.items.splice(index, 1);
         },
         [logOut.fulfilled](state) {
             state.items = [];
             state.isLoading = false;
+            state.status = null;
         },
     },
 });

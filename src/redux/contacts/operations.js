@@ -1,12 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export function getStatus(status) {
+    return status;
+};
+
 export const fetchContacts = createAsyncThunk(
     'contacts/fetchAll',
     async (_, thunkAPI) => {
         try {
             const res = await axios.get('/contacts');
-            return res.data;
+            return {
+                data: res.data,
+                status: res.status,
+            };
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
@@ -17,8 +24,11 @@ export const addContact = createAsyncThunk(
     'contacts/addContact',
     async (contact, thunkAPI) => {
         try {
-            const response = await axios.post('/contacts', contact);
-            return response.data;
+            const res = await axios.post('/contacts', contact);
+            return {
+                data: res.data,
+                status: res.status,
+            };
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }
@@ -28,10 +38,12 @@ export const addContact = createAsyncThunk(
 export const deleteContact = createAsyncThunk(
     'contacts/deleteContacts',
     async (contactID, thunkAPI) => {
-        console.log(contactID)
         try {
-            const response = await axios.delete(`/contacts/${contactID}`);
-            return response.data;
+            const res = await axios.delete(`/contacts/${contactID}`);
+            return {
+                data: res.data,
+                status: res.status,
+            };
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
         }

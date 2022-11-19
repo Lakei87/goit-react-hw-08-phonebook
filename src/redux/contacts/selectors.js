@@ -4,4 +4,6 @@ export const selectFilter = state => state.contacts.filter;
 
 export const selectContacts = state => state.contacts.items;
 
-export const selectNewContactLoading = state => state.contacts.isLoadingNewContact;
+export const selectIsAddingContact = state => state.contacts.isAddingContact;
+
+export const selectStatus = state => state.contacts.status;

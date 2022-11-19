@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { addContact } from 'redux/contacts/operations';
-import { selectContacts, selectNewContactLoading} from 'redux/contacts/selectors';
+import { selectContacts, selectIsAddingContact} from 'redux/contacts/selectors';
 import styles from './contactForm.module.css';
 
 export default function ContactForm() {
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
-    const isLoading = useSelector(selectNewContactLoading);
+    const isLoading = useSelector(selectIsAddingContact);
 
     const handleSubmit = e => {
         e.preventDefault();
