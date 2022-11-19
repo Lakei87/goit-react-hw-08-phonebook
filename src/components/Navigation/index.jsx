@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 import { selectIsLoggedIn } from "redux/auth/selectors";
+import { Link, Text } from "./navigation.styled";
 
 export default function Navigation() {
     const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -11,7 +12,10 @@ export default function Navigation() {
                 "Phone Book"
             ) : (
                 <Link to='/'>
-                    Home
+                    <HomeIcon fontSize="large" />
+                    <Text>
+                        Home
+                    </Text>
                 </Link>
             )}
         </div>

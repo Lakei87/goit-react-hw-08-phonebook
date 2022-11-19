@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Wrapper, Link } from "./authNav.styled";
 
 export default function AuthNav() {
     return (
-        <div>
+        <Wrapper>
             <Link to='/register'>
-                <button type="submit">Sign up</button>
+                <Button type="button" variant="contained">Sign up</Button>
             </Link>
             <Link to='login'>
-                <button type="submit">Login</button>
+                <Button type="button" variant="contained">Login</Button>
             </Link>
-        </div>
+        </Wrapper>
     );
 };
