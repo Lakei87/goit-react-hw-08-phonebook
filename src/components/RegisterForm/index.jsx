@@ -19,7 +19,7 @@ export default function RegisterForm() {
         password: password.value,
       })
     );
-    form.reset();
+    // form.reset();
   };
 
 
@@ -31,7 +31,7 @@ export default function RegisterForm() {
         Please register
       </FormTitle>
       <TextField
-        id="outlined-basic"
+        // id="outlined-basic"
         label="Username"
         variant="outlined"
         required={true}
@@ -39,7 +39,7 @@ export default function RegisterForm() {
         name="name"
       />
       <TextField
-        id="outlined-basic"
+        // id="outlined-basic"
         label="Email"
         variant="outlined"
         required={true}
@@ -47,7 +47,7 @@ export default function RegisterForm() {
         name="email"
       />
       <TextField
-        id="outlined-basic"
+        // id="outlined-basic"
         label="Password"
         variant="outlined"
         required={true}

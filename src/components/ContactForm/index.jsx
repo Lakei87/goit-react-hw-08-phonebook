@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts, selectIsAddingContact} from 'redux/contacts/selectors';
 import styles from './contactForm.module.css';
@@ -18,7 +17,7 @@ export default function ContactForm() {
         
         if (isContactInList) {
             name.focus();
-            return (Notify.info(`${name.value} is already in contacts`))
+            return alert(`"${name.value}" is already in contacts`);
         } else {
             dispatch(addContact({
                 name: name.value,

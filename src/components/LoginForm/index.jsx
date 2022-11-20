@@ -17,7 +17,7 @@ export default function LoginForm() {
         password: password.value,
       })
     );
-    form.reset();
+    // form.reset();
   };
 
   return (
@@ -29,7 +29,7 @@ export default function LoginForm() {
         Please login
       </FormTitle>
       <TextField
-        id="outlined-basic"
+        // id="outlined-basic"
         label="Email"
         variant="outlined"
         required={true}
@@ -37,7 +37,7 @@ export default function LoginForm() {
         name="email"
       />
       <TextField
-        id="outlined-basic"
+        // id="outlined-basic"
         label="Password"
         variant="outlined"
         required={true}
