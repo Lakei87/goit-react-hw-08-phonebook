@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Notify } from "notiflix";
 import { logOut } from "redux/auth/operations";
 import { fetchContacts, addContact, deleteContact } from "./operations";
 
@@ -8,9 +9,7 @@ const handlePending = state => {
 
 const handleRejected = (state, { payload }) => {
     state.isLoading = false;
-    state.error = payload.data;
-    state.isAddingContact = false;
-    state.status = payload.status;
+    state.error = payload;
 };
 
 export const contactsSlice = createSlice({
@@ -20,7 +19,6 @@ export const contactsSlice = createSlice({
         filter: '',
         isLoading: false,
         isAddingContact: false,
-        status: null,
     },
     reducers: {
         setFilter(state, { payload }) {
@@ -29,39 +27,37 @@ export const contactsSlice = createSlice({
     },
     extraReducers: {
         [fetchContacts.pending]: handlePending,
-        [addContact.pending]: handlePending,
-        [addContact.pending](state, _) {
-            state.isAddingContact = true;
-        },
         [deleteContact.pending]: handlePending,
         [fetchContacts.rejected]: handleRejected,
         [deleteContact.rejected]: handleRejected,
         [addContact.rejected]: handleRejected,
-
+        
         [fetchContacts.fulfilled](state, { payload }) {
             state.isLoading = false;
-            state.items = payload.data;
+            state.items = payload;
         },
-
+        
+        [addContact.pending](state, _) {
+            state.isLoading = true;
+            state.isAddingContact = true;
+        },
         [addContact.fulfilled](state, { payload }) {
             state.isLoading = false;
-            state.items.push(payload.data);
+            state.items.push(payload);
             state.isAddingContact = false;
-            state.status = payload.status;
+            Notify.success('Contact successfully added');
         },
 
         [deleteContact.fulfilled](state, { payload }) {
             state.isLoading = false;
             const index = state.items.findIndex(
-                ({ id }) => id === payload.data.id
+                ({ id }) => id === payload.id
             );
             state.items.splice(index, 1);
-            state.status = payload.status;
         },
         [logOut.fulfilled](state) {
             state.items = [];
             state.isLoading = false;
-            state.status = null;
         },
     },
 });
