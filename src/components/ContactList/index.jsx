@@ -12,12 +12,13 @@ export default function ContactList() {
 
     return (
         <ul className={styles.contactList}>
-            {filteredContacts.map(({id, name, number}) => {
+            {filteredContacts.map(({ _id, name, phone }) => {
+                console.log(_id)
                 return <ContactItem
-                    key={id}
+                    key={_id}
                     name={name}
-                    number={number}
-                    contactId={id}
+                    phone={phone}
+                    contactId={_id}
                 />
             })}
         </ul>
