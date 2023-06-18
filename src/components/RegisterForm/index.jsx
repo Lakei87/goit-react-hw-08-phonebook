@@ -23,9 +23,11 @@ export default function RegisterForm() {
       })
     ).then(res => {
       if (res.error) {
-        return Notify.failure(res.payload.data.message)
+        return Notify.failure(res.payload.data.message, {
+          position: 'center-top',
+        })
       } else {
-        return Notify.info('Confirmation has been sent to your email')
+        return Notify.info('Confirm your e-mail address, please.')
       }
     });
     // form.reset();
