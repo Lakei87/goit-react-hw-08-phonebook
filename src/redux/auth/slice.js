@@ -7,7 +7,6 @@ const handlePending = () => {
 };
 
 const handleRejected = (state, { payload }) => {
-    console.log(payload)
     state.user = { name: null, email: null };
     state.token = null;
     state.isLoggedIn = false;
