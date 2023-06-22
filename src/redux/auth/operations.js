@@ -2,8 +2,8 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:3001/api/';
-axios.defaults.baseURL = 'https://react-phonebook-backend.onrender.com/api/';
+axios.defaults.baseURL = 'http://localhost:3001/api/';
+// axios.defaults.baseURL = 'https://react-phonebook-backend.onrender.com/api/';
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -75,6 +75,21 @@ export const refreshUser = createAsyncThunk(
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
+        }
+    },
+);
+
+export const resendMail = createAsyncThunk(
+    'auth/resendMail',
+    async (credentials, thunkAPI) => {
+        try {
+            const res = await axios.post('/auth/verify', credentials);
+            // After successful login, add the token to the HTTP header
+            console.log(res)
+            setAuthHeader(res.data.token);
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response);
         }
     },
 );

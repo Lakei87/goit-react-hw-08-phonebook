@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button } from "@mui/material";
 import { Notify } from "notiflix";
-import { register } from "redux/auth/operations";
+import { register, resendMail } from "redux/auth/operations";
 import { FormWrap } from "components/Box";
-import { FormTitle, Proposition, Link } from "./registerForm.styled";
+import { FormTitle, Proposition, Link, SendMailAgain } from "./registerForm.styled";
 import { selectUser } from "redux/auth/selectors";
 
 export default function RegisterForm() {
@@ -25,14 +25,31 @@ export default function RegisterForm() {
       if (res.error) {
         return Notify.failure(res.payload.data.message, {
           position: 'center-top',
+          timeout: 7000,
+          fontSize: '16px',
         })
       } else {
-        return Notify.info('Confirm your e-mail address, please.')
+        return Notify.info('Check your e-mail and confirm registration, please.', {
+          position: 'center-top',
+          timeout: 7000,
+          fontSize: '16px',
+        })
       }
     });
     // form.reset();
   };
 
+  const handleResendMail = () => {
+    dispatch(
+      resendMail({ email: user.email })
+    ).then(() => {
+      return Notify.info('Check your e-mail and confirm registration, please.', {
+        position: 'center-top',
+        timeout: 7000,
+        fontSize: '16px',
+      });
+    });
+  };
 
   return (
     <FormWrap
@@ -72,8 +89,12 @@ export default function RegisterForm() {
       </Button>
       {user.email &&
         <Proposition>
-          Have not received email. Send again
-        </Proposition>}
+          Have not received email? Send 
+          <SendMailAgain onClick={handleResendMail} href="#">
+            again
+          </SendMailAgain>
+        </Proposition>
+      }
       <Proposition>
         Alresdy have an account? Please login
         <Link to='/login'>

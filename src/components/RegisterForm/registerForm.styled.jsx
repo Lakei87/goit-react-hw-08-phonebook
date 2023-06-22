@@ -15,3 +15,9 @@ export const Link = styled(NavLink)`
     margin-left: 5px;
     color: #1976d2;
 `;
+
+export const SendMailAgain = styled.a`
+    text-decoration: none;
+    margin-left: 5px;
+    color: #1976d2;
+`
