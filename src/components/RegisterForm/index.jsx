@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField, Button } from "@mui/material";
 import { Notify } from "notiflix";
@@ -6,7 +7,14 @@ import { FormWrap } from "components/Box";
 import { FormTitle, Proposition, Link, SendMailAgain } from "./registerForm.styled";
 import { selectUser } from "redux/auth/selectors";
 
+Notify.init({
+  position: 'center-top',
+  timeout: 7000,
+  fontSize: '16px',
+});
+
 export default function RegisterForm() {
+  const [isSendingMailAgain, setIssendingMailAgain] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -23,32 +31,23 @@ export default function RegisterForm() {
       })
     ).then(res => {
       if (res.error) {
-        return Notify.failure(res.payload.data.message, {
-          position: 'center-top',
-          timeout: 7000,
-          fontSize: '16px',
-        })
+        return Notify.failure(res.payload.data.message)
       } else {
-        return Notify.info('Check your e-mail and confirm registration, please.', {
-          position: 'center-top',
-          timeout: 7000,
-          fontSize: '16px',
-        })
+        return Notify.info('Check your email and confirm registration, please.')
       }
     });
-    // form.reset();
   };
 
   const handleResendMail = () => {
+    if (isSendingMailAgain) {
+      return Notify.info('Check for correct your email address.');
+    }
     dispatch(
       resendMail({ email: user.email })
     ).then(() => {
-      return Notify.info('Check your e-mail and confirm registration, please.', {
-        position: 'center-top',
-        timeout: 7000,
-        fontSize: '16px',
-      });
+      return Notify.info('Mail was sent again.');
     });
+    setIssendingMailAgain(true);
   };
 
   return (
@@ -59,7 +58,6 @@ export default function RegisterForm() {
         Please register
       </FormTitle>
       <TextField
-        // id="outlined-basic"
         label="Username"
         variant="outlined"
         required={true}
@@ -67,7 +65,6 @@ export default function RegisterForm() {
         name="name"
       />
       <TextField
-        // id="outlined-basic"
         label="Email"
         variant="outlined"
         required={true}
@@ -75,7 +72,6 @@ export default function RegisterForm() {
         name="email"
       />
       <TextField
-        // id="outlined-basic"
         label="Password"
         variant="outlined"
         required={true}
@@ -89,14 +85,17 @@ export default function RegisterForm() {
       </Button>
       {user.email &&
         <Proposition>
-          Have not received email? Send 
-          <SendMailAgain onClick={handleResendMail} href="#">
+          Didn't get your email? Send 
+          <SendMailAgain
+            onClick={handleResendMail}
+            href="#"
+            isSendingMailAgain={isSendingMailAgain}>
             again
           </SendMailAgain>
         </Proposition>
       }
       <Proposition>
-        Alresdy have an account? Please login
+        Have an account already? Please, login
         <Link to='/login'>
           HERE
         </Link>
