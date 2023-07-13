@@ -1,8 +1,15 @@
 import { useDispatch } from 'react-redux';
 import { TextField, Button } from '@mui/material';
+import { Notify } from "notiflix";
 import { logIn } from 'redux/auth/operations';
 import { FormWrap } from 'components/Box';
 import { FormTitle, Proposition, Link } from './loginForm.slyled';
+
+Notify.init({
+  position: 'center-top',
+  timeout: 7000,
+  fontSize: '16px',
+});
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -16,7 +23,11 @@ export default function LoginForm() {
         email: email.value,
         password: password.value,
       })
-    );
+    ).then(res => {
+      return res.error
+        ? Notify.failure(res.payload.data.message)
+        : Notify.success("Welcome to Phonebook")
+      });
     // form.reset();
   };
 

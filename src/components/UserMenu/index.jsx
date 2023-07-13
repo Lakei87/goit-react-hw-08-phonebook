@@ -10,7 +10,7 @@ export const UserMenu = () => {
     
     return (
         <NavWrap>
-            <Greeting>Welcome, {user.name}</Greeting>
+            <Greeting>{`Welcome, ${user.name}`}</Greeting>
             <Button
                 type="submit"
                 variant="contained"

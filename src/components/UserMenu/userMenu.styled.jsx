@@ -6,6 +6,6 @@ export const NavWrap = styled.nav`
 `;
 
 export const Greeting = styled.p`
-margin-right: 15px;
+    margin-right: 15px;
     font-size: 18px;
 `
