@@ -2,16 +2,16 @@ import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 
-export const Link = styled(NavLink)`
-    display: flex;
-    align-items: center;
-    color: #1976d2;
-    text-decoration: none;
+export const Link = styled(NavLink)(({theme}) => ({
+    display: 'flex',
+    alignItems: 'center',
+    color: 'inherit',
+    transition: 'color 0.3s ease-in-out',
 
-    &:hover{
-        color: #1565c0;
+    '&:hover': {
+        color: theme.palette.common.white,
     }
-`;
+}));
 
 export const Logo = styled('p')((props) => ({
     fontSize: "50px",

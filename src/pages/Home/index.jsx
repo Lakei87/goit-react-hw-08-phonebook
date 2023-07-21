@@ -1,12 +1,19 @@
 import { Title, Icon } from "./home.styled";
 import phoneIcon from "../../images/phone-icon.png"
-import { MainWrap } from "components/Box";
+import { Section, Container, Footer, Main } from "components/Box";
 
 export default function Home() {
     return (
-        <MainWrap>
-            <Icon src={phoneIcon} alt="phoneIcon" />
-            <Title>Phone Book Application</Title>
-        </MainWrap>
+        <>
+        <Main>
+            <Section>
+                <Container>
+                    <Icon src={phoneIcon} alt="phoneIcon" />
+                    <Title>Phone Book Application</Title>
+                </Container>
+            </Section>
+        </Main>
+        <Footer></Footer>
+        </>
     );
 };

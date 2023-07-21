@@ -14,8 +14,13 @@ export const Link = styled(NavLink)`
     }
 `;
 
-export const LinkText = styled(Button)(({theme}) => ({
+export const LinkText = styled(Button)(({ theme }) => ({
+    color: "#000",
+    background: "#dbd9d9",
     width: "95px",
+    '&:hover': {
+        background: "#fff"
+    },
     [theme.breakpoints.up('768')]: {
         width: "115px",
         fontSize: "16px"

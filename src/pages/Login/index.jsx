@@ -1,10 +1,10 @@
 import LoginForm from "components/LoginForm";
-import { MainWrap } from "components/Box";
+import { Main } from "components/Box";
 
 export default function Login() {
     return (
-        <MainWrap>
+        <Main>
             <LoginForm />
-        </MainWrap>
+        </Main>
     );
 };

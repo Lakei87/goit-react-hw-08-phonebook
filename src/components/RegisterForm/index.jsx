@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TextField, Button } from "@mui/material";
 import { Notify } from "notiflix";
 import { register, resendMail } from "redux/auth/operations";
-import { FormWrap } from "components/Box";
-import { FormTitle, Proposition, Link, SendMailAgain } from "./registerForm.styled";
 import { selectUser } from "redux/auth/selectors";
+import {
+  FormWrap,
+  Section,
+  Container,
+  FormTitle,
+  Proposition,
+  Link,
+  Field,
+  Btn
+} from "components/Box";
+import { SendMailAgain } from "./registerForm.styled";
 
 Notify.init({
   position: 'center-top',
@@ -51,55 +59,60 @@ export default function RegisterForm() {
   };
 
   return (
-    <FormWrap
-      onSubmit={handleSubmit}
-      autoComplete="off">
-      <FormTitle>
-        Please register
-      </FormTitle>
-      <TextField
-        label="Username"
-        variant="outlined"
-        required={true}
-        type="text"
-        name="name"
-      />
-      <TextField
-        label="Email"
-        variant="outlined"
-        required={true}
-        type="email"
-        name="email"
-      />
-      <TextField
-        label="Password"
-        variant="outlined"
-        required={true}
-        type="password"
-        name="password"
-      />
-      <Button
-        type="submit"
-        variant="contained">
-        Register
-      </Button>
-      {user.email &&
-        <Proposition>
-          Didn't get your email? Send 
-          <SendMailAgain
-            onClick={handleResendMail}
-            href="#"
-            isSendingMailAgain={isSendingMailAgain}>
-            again
-          </SendMailAgain>
-        </Proposition>
-      }
-      <Proposition>
-        Have an account already? Please, login
-        <Link to='/login'>
-          HERE
-        </Link>
-      </Proposition>
-    </FormWrap>
+    <Section>
+      <Container>
+        <FormWrap
+          onSubmit={handleSubmit}
+          autoComplete="off">
+          <FormTitle>
+            Please register
+          </FormTitle>
+          <Field
+            label="Username"
+            variant="outlined"
+            required={true}
+            type="text"
+            name="name"
+          />
+          <Field
+            label="Email"
+            variant="outlined"
+            required={true}
+            type="email"
+            name="email"
+          />
+          <Field
+            label="Password"
+            variant="outlined"
+            required={true}
+            type="password"
+            name="password"
+          />
+          <Btn
+            type="submit"
+            variant="contained"
+          >
+            Register
+          </Btn>
+          {user.email &&
+            <Proposition>
+              Didn't get your email? Send 
+              <SendMailAgain
+                onClick={handleResendMail}
+                href="#"
+                isSendingMailAgain={isSendingMailAgain}>
+                again
+              </SendMailAgain>
+            </Proposition>
+          }
+          <Proposition>
+            Have an account already? Please, login
+            <Link to='/login'>
+              here
+            </Link>
+          </Proposition>
+        </FormWrap>
+      </Container>
+    </Section>
   );
 };

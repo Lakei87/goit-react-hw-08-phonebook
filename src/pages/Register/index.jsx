@@ -1,10 +1,10 @@
 import RegisterForm from "components/RegisterForm";
-import { MainWrap } from "components/Box";
+import { Main } from "components/Box";
 
 export default function Register() {
   return (
-    <MainWrap>
+    <Main>
       <RegisterForm />
-    </MainWrap>
+    </Main>
   );
 };

@@ -1,9 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { TextField, Button } from '@mui/material';
 import { Notify } from "notiflix";
 import { logIn } from 'redux/auth/operations';
-import { FormWrap } from 'components/Box';
-import { FormTitle, Proposition, Link } from './loginForm.slyled';
+import {
+  FormWrap,
+  Section,
+  Container,
+  FormTitle,
+  Proposition,
+  Link,
+  Field,
+  Btn
+} from "components/Box";
 
 Notify.init({
   position: 'center-top',
@@ -32,41 +39,42 @@ export default function LoginForm() {
   };
 
   return (
-    
-    <FormWrap
-      onSubmit={handleSubmit}
-      autoComplete="off">
-      <FormTitle>
-        Please login
-      </FormTitle>
-      <TextField
-        // id="outlined-basic"
-        label="Email"
-        variant="outlined"
-        required={true}
-        type="email"
-        name="email"
-      />
-      <TextField
-        // id="outlined-basic"
-        label="Password"
-        variant="outlined"
-        required={true}
-        type="password"
-        name="password"
-      />
-      <Button
-        type="submit"
-        variant="contained">
-        Log In
-      </Button>
-      <Proposition>
-        You don't have an account yet? Please register
-        <Link to='/register'>
-          HERE
-        </Link>
-      </Proposition>
-    </FormWrap>
+    <Section>
+      <Container>
+        <FormWrap
+          onSubmit={handleSubmit}
+          autoComplete="off">
+          <FormTitle>
+            Please login
+          </FormTitle>
+          <Field
+            label="Email"
+            variant="outlined"
+            required={true}
+            type="email"
+            name="email"
+          />
+          <Field
+            label="Password"
+            variant="outlined"
+            required={true}
+            type="password"
+            name="password"
+          />
+          <Btn
+            type="submit"
+            variant="contained">
+            Log In
+          </Btn>
+          <Proposition>
+            You don't have an account yet? Please register
+            <Link to='/register'>
+              here
+            </Link>
+          </Proposition>
+        </FormWrap>
+      </Container>
+    </Section>
   );
 };
 
