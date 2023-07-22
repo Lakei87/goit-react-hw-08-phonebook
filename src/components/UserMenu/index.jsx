@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '@mui/material';
 import { logOut } from 'redux/auth/operations';
 import { selectUser } from 'redux/auth/selectors';
-import { NavWrap, Greeting } from './userMenu.styled';
+import { NavWrap, Greeting, BtnLogout } from './userMenu.styled';
 
 export const UserMenu = () => {
     const dispatch = useDispatch();
@@ -11,12 +10,12 @@ export const UserMenu = () => {
     return (
         <NavWrap>
             <Greeting>{`Welcome, ${user.name}`}</Greeting>
-            <Button
+            <BtnLogout
                 type="submit"
                 variant="contained"
                 onClick={() => dispatch(logOut())}>
                 Logout
-            </Button>
+            </BtnLogout>
         </NavWrap>
     );
 };

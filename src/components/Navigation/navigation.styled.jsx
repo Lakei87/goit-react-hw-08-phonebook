@@ -1,5 +1,5 @@
-import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import { styled } from "@mui/material/styles";
 import HomeIcon from '@mui/icons-material/Home';
 
 export const Link = styled(NavLink)(({theme}) => ({
@@ -13,9 +13,13 @@ export const Link = styled(NavLink)(({theme}) => ({
     }
 }));
 
-export const Logo = styled('p')((props) => ({
-    fontSize: "50px",
-    fontWeight: 500,
+export const Logo = styled('p')(({ theme }) => ({
+    display: "none",
+    [theme.breakpoints.up('768')]: {
+        display: "block",
+        fontSize: "30px",
+        fontWeight: 500,
+    },
 }));
 
 export const LogoText = styled('p')(({ theme }) => ({

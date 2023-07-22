@@ -6,7 +6,7 @@ export default function AuthNav() {
             <Link to='/register'>
                 <LinkText type="button" variant="contained">Sign up</LinkText>
             </Link>
-            <Link to='login'>
+            <Link to='/login'>
                 <LinkText type="button" variant="contained">Login</LinkText>
             </Link>
         </Wrapper>
