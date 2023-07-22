@@ -1,6 +1,7 @@
-import { Title, Icon } from "./home.styled";
+import { Section, Container, Main } from "components/Box";
+import Footer from "components/Footer";
 import phoneIcon from "../../images/phone-icon.png"
-import { Section, Container, Footer, Main } from "components/Box";
+import { Title, Icon } from "./home.styled";
 
 export default function Home() {
     return (
@@ -13,7 +14,7 @@ export default function Home() {
                 </Container>
             </Section>
         </Main>
-        <Footer></Footer>
+        <Footer/>
         </>
     );
 };

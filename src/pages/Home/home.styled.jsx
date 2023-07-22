@@ -26,4 +26,4 @@ export const Icon = styled.img`
         width: 180px;
         height: 180px;
     }
-`
+`;

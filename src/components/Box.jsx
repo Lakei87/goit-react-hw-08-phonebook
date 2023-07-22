@@ -12,10 +12,11 @@ export const Box = styled('div')(
 );
 
 export const Main = styled('main')`
-    flex-grow: 1;
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
+    padding-bottom: 15px;
     background-image: url(${BgImg});
 `;
 
@@ -26,14 +27,6 @@ export const Section = styled('section')`
 export const Container = styled('div')`
     padding: 0 15px;
     text-align: center;
-`;
-
-export const Footer = styled('footer')`
-    width: 100%;
-    height: 30px;
-    flex-shrink: 0;
-
-    box-shadow: 0px -10px 16px -12px #fff;
 `;
 
 
@@ -75,7 +68,7 @@ export const Field = styled(TextField)(({ theme }) => ({
             borderColor: '#ffffffce',
         },
         '&:hover fieldset': {
-            borderColor: '#ffffff',
+            borderColor: '#fff',
         },
         '&.Mui-focused fieldset': {
             borderColor: '#fff',
