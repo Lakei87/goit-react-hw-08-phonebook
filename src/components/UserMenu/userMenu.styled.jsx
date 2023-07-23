@@ -12,16 +12,18 @@ export const NavWrap = styled('nav')(({ theme }) => ({
 }));
 
 export const Greeting = styled('p')(({theme}) => ({
-    fontSize: "18px",
+    fontSize: "20px",
     [theme.breakpoints.up('768')]: {
         marginRight: "40px",
     }
 }));
 
 export const BtnLogout = styled(Button)(() => ({
+    width: "95px",
     color: "#000",
     background: "#dbd9d9",
-    width: "95px",
+    fontSize: "18px",
+    textTransform: "none",
     '&:hover': {
         background: "#fff"
     },

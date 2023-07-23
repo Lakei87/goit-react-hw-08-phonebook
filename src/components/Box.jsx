@@ -13,6 +13,7 @@ export const Box = styled('div')(
 
 export const Main = styled('main')`
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
@@ -30,7 +31,7 @@ export const Container = styled('div')`
 `;
 
 
-/**styles for register and login forms */
+/**styles for register, login and contacts forms */
 export const FormWrap = styled('form')`
     display: flex;
     flex-direction: column;
@@ -84,7 +85,7 @@ export const Btn = styled(Button)(({ theme }) => ({
     width: 250,
     [theme.breakpoints.up('1024')]: {
         width: 300,
-    }
+    },
 }));
 
 export const Proposition = styled('p')`
