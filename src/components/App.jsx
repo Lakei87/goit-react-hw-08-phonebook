@@ -27,7 +27,12 @@ export default function App() {
     <Suspense>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<HomePage />}></Route>
+          <Route
+            index
+            element={
+              <RestrictedRoute redirectTo='/contacts' component={<HomePage />} />
+            }>
+          </Route>
           <Route
             path='/register'
             element={
