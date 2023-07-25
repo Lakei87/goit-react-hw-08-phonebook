@@ -18,7 +18,7 @@ export default function Contacts() {
     }, [dispatch]);
 
     return (
-        <Main>
+        <Main sx={{justifyContent: "start"}}>
             <Section>
                 <Container>
                     <SubTitle>Add new contact</SubTitle>
@@ -26,8 +26,12 @@ export default function Contacts() {
                 </Container>
             </Section>
             <Section>
-                <Container>
-                    <SubTitle>Contacts</SubTitle>
+                <Container sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center"
+                }}>
+                    <SubTitle>Contact list</SubTitle>
                     {contacts.length === 0
                         ? (<Notification message={'Phonebook is empty. You can add a new contact.'} />)
                         : <>

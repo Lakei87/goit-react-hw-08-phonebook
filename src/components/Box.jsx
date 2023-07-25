@@ -23,11 +23,13 @@ export const Main = styled('main')`
 
 export const Section = styled('section')`
     padding: 15px 0;
+    @media (min-width: 768px){
+        padding: 30px 0;
+    }
 `;
 
 export const Container = styled('div')`
     padding: 0 15px;
-    text-align: center;
 `;
 
 
@@ -76,14 +78,14 @@ export const Field = styled(TextField)(({ theme }) => ({
         },
     },
 
-    [theme.breakpoints.up('1024')]: {
+    [theme.breakpoints.up('768')]: {
         width: 300
     }
 }));
 
 export const Btn = styled(Button)(({ theme }) => ({
     width: 250,
-    [theme.breakpoints.up('1024')]: {
+    [theme.breakpoints.up('768')]: {
         width: 300,
     },
 }));

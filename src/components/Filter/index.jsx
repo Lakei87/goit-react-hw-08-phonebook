@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
+import { Field } from 'components/Box';
 import { setFilter } from 'redux/contacts/slice';
-import styles from './filter.module.css';
 
 export default function Filter() {
     const dispatch = useDispatch();
@@ -10,13 +10,12 @@ export default function Filter() {
     };
 
     return (
-        <label>
-            Find contacts by name
-            <input
-                className={styles.filter}
-                type="text"
-                onChange={handleFilterChange}
-            />
-        </label>
+        <Field
+            type='text'
+            label='Search'
+            variant='outlined'
+            onChange={handleFilterChange}
+            sx={{marginBottom:"10px"}}
+        />
     );
 };

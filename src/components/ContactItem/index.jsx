@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
-import styles from './contactItem.module.css';
+import { Item, ItemInner, TextWrap, Text, BtnWrap, Btn } from './contactItem.styled';
 
 export default function ContactItem({ name, phone, contactId }) {
     const dispatch = useDispatch();
@@ -9,17 +9,19 @@ export default function ContactItem({ name, phone, contactId }) {
     const handleDelete = id => dispatch(deleteContact(id))
     
     return (
-        <li className={styles.contactList__item}>
-            <p className={styles.contactList__name}>{name}:</p>
-            <p className={styles.contactList__number}>{phone}</p>
-            <button
-                className={styles.contactList__btn}
-                type="button"
-            onClick={() => handleDelete(contactId)}
-            >
-                Delete
-            </button>
-        </li>
+        <Item>
+            <ItemInner>
+                <TextWrap>
+                    <Text>{ name }</Text>
+                </TextWrap>
+                <TextWrap>
+                    <Text>{ phone }</Text>
+                </TextWrap>
+            </ItemInner>
+            <BtnWrap>
+                <Btn type='button' onClick={() => handleDelete(contactId)}></Btn>
+            </BtnWrap>
+        </Item>
     );
 };
 

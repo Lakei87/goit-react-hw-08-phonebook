@@ -8,7 +8,7 @@ export default function Home() {
         <>
         <Main>
             <Section>
-                <Container>
+                <Container sx={{textAlign:"center"}}>
                     <Icon src={phoneIcon} alt="phoneIcon" />
                     <Title>Phone Book Application</Title>
                 </Container>

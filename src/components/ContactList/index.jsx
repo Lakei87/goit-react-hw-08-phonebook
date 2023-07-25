@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
-import { selectFilter } from 'redux/contacts/selectors';
-import { selectContacts } from 'redux/contacts/selectors';
 import ContactItem from "components/ContactItem";
-import styles from './contactList.module.css';
+import { selectFilter, selectContacts } from 'redux/contacts/selectors';
+import { List } from './contactList.styled';
 
 export default function ContactList() {
     const contacts = useSelector(selectContacts);
@@ -11,7 +10,7 @@ export default function ContactList() {
         .filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()));
 
     return (
-        <ul className={styles.contactList}>
+        <List>
             {filteredContacts.map(({ _id, name, phone }) => {
                 return <ContactItem
                     key={_id}
@@ -20,6 +19,6 @@ export default function ContactList() {
                     contactId={_id}
                 />
             })}
-        </ul>
+        </List>
     );
 };
