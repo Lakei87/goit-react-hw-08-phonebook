@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Notify } from "notiflix";
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts, selectIsAddingContact} from 'redux/contacts/selectors';
 import {
@@ -26,7 +27,12 @@ export default function ContactForm() {
             dispatch(addContact({
                 name: name.value,
                 phone: phone.value,
-            }));
+            })).then(res => {
+                if (res.type.includes("fulfilled")) Notify.success("Added", {
+                    position: "right-bottom",
+                    width: "130px",
+                });
+            });
         };
 
         form.reset();
@@ -64,41 +70,5 @@ export default function ContactForm() {
                 }
             </Btn>
         </FormWrap>
-
-//=======================================================================================
-        // <form className={styles.contactForm} name="phoneBook" onSubmit={handleSubmit}>
-        //     <label>
-        //         Name
-        //         <input
-        //             autoFocus="autofocus"
-        //             className={styles.contactForm__input}
-        //             type="text"
-        //             name="name"
-        //             // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        //             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        //             required
-        //         />
-        //     </label>
-        //     <label>
-        //         Phone
-        //         <input
-        //             className={styles.contactForm__input}
-        //             type="tel"
-        //             name="phone"
-        //             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        //             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        //             required
-        //         />
-        //     </label>
-        //     <button
-        //         className={styles.contactForm__btn}
-        //         type="submit">
-                // {isLoading ? (
-                //     "Loading..."
-                // ) : (
-                //     "Add contact"
-                // )}
-        //     </button>
-        // </form>
     );
 };

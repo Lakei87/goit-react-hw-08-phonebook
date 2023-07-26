@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Notify } from "notiflix";
 import { logOut } from "redux/auth/operations";
 import { fetchContacts, addContact, deleteContact } from "./operations";
 
@@ -45,7 +44,6 @@ export const contactsSlice = createSlice({
             state.isLoading = false;
             state.items.push(payload);
             state.isAddingContact = false;
-            Notify.success('Contact successfully added');
         },
 
         [deleteContact.fulfilled](state, { payload }) {

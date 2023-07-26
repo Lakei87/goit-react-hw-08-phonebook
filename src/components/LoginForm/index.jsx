@@ -12,11 +12,6 @@ import {
   Btn
 } from "components/Box";
 
-Notify.init({
-  position: 'center-top',
-  timeout: 7000,
-  fontSize: '16px',
-});
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -31,11 +26,12 @@ export default function LoginForm() {
         password: password.value,
       })
     ).then(res => {
-      return res.error
-        ? Notify.failure(res.payload.data.message)
-        : Notify.success("Welcome to Phonebook")
+      return res.error && Notify.failure(res.payload.data.message, {
+        position: 'center-top',
+        timeout: 5000,
+        fontSize: '16px',
       });
-    // form.reset();
+    });
   };
 
   return (
