@@ -17,7 +17,7 @@ import { SendMailAgain } from "./registerForm.styled";
 
 Notify.init({
   position: 'center-top',
-  timeout: 7000,
+  timeout: 5000,
   fontSize: '16px',
 });
 

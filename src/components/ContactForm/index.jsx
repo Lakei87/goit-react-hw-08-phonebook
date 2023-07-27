@@ -22,13 +22,16 @@ export default function ContactForm() {
         
         if (isContactInList) {
             name.focus();
-            return alert(`"${name.value}" is already in contacts`);
+            return Notify.failure(`"${name.value}" is already in contacts`, {
+                timeout: 5000,
+            });
         } else {
             dispatch(addContact({
                 name: name.value,
                 phone: phone.value,
             })).then(res => {
                 if (res.type.includes("fulfilled")) Notify.success("Added", {
+                    timeout: 2000,
                     position: "right-bottom",
                     width: "130px",
                 });
