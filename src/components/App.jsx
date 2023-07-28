@@ -2,7 +2,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { selectIsRefreshing } from 'redux/auth/selectors';
+import { selectIsCurrentUser } from 'redux/auth/selectors';
 import { refreshUser } from 'redux/auth/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -15,13 +15,13 @@ const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export default function App() {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const isCurrentUser = useSelector(selectIsCurrentUser);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
+  return isCurrentUser ? (
     Loading.circle()
   ) : (
     <Suspense>
