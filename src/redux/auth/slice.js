@@ -19,7 +19,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isCurrentUser: false,
-    isVerify: Boolean,
+    isVerify: null,
 };
 
 const authSlice = createSlice({

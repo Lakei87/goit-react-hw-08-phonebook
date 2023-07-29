@@ -6,11 +6,11 @@ import { selectIsCurrentUser } from 'redux/auth/selectors';
 import { currentUser } from 'redux/auth/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-import Verify from 'pages/Verify';
 
 const Layout = lazy(() => import('./Layout'));
 const HomePage = lazy(() => import('pages/Home'));
 const RegisterPage = lazy(() => import('pages/Register'));
+const VerifyPage = lazy(() => import('pages/Verify'));
 const LoginPage = lazy(() => import('pages/Login'));
 const ContactsPage = lazy(() => import('pages/Contacts'));
 
@@ -41,7 +41,7 @@ export default function App() {
 
           <Route
             path='/register/:verifycationToken'
-            element={<Verify />}/>
+            element={<VerifyPage />}/>
 
           <Route
             path='/login'

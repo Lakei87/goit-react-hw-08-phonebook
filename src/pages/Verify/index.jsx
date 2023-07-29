@@ -17,7 +17,7 @@ export default function Verify() {
     const token = pathnameArr[pathnameArr.length - 1];
     
     useEffect(() => {
-        if (isVerify) {
+        if (isVerify === true) {
             Notify.success('Verification successful. Please login.', {
                 timeout: 3000,
                 position: "center-top",
@@ -33,7 +33,7 @@ export default function Verify() {
     
     return (
         <>
-            {!isVerify &&
+            {isVerify === false &&
                 <Main>
                     <Container sx={{textAlign: "center"}}>
                         <Title>Oops..!</Title>
