@@ -23,7 +23,7 @@ export default function Verify() {
                 position: "center-top",
             });
 
-            return () => { navigate('/login') };
+            navigate('/login');
         };
     }, [navigate, isVerify]);
 
