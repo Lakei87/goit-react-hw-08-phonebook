@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Notify } from 'notiflix';
 import { Main, Container } from 'components/Box';
 import { tokenVerification } from 'redux/auth/operations';
 import { selectIsVerify } from 'redux/auth/selectors';
@@ -16,7 +17,14 @@ export default function Verify() {
     const token = pathnameArr[pathnameArr.length - 1];
     
     useEffect(() => {
-        if(isVerify){return () => {navigate('/login')}}
+        if (isVerify) {
+            Notify.success('Verification successful. Please login.', {
+                timeout: 3000,
+                position: "center-top",
+            });
+
+            return () => { navigate('/login') };
+        };
     }, [navigate, isVerify]);
 
     useEffect(() => {
@@ -24,11 +32,15 @@ export default function Verify() {
     },[dispatch, token])
     
     return (
-        <Main>
-            <Container sx={{textAlign: "center"}}>
-                <Title>Oops..!</Title>
-                <Text>Something Went Wrong. Please try again later or contact support.</Text>
-            </Container>
-        </Main>
+        <>
+            {!isVerify &&
+                <Main>
+                    <Container sx={{textAlign: "center"}}>
+                        <Title>Oops..!</Title>
+                        <Text>Something Went Wrong. Please try again later or contact support.</Text>
+                    </Container>
+                </Main>
+            }
+        </>
     );
 };
