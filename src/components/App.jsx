@@ -3,9 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { selectIsCurrentUser } from 'redux/auth/selectors';
-import { refreshUser } from 'redux/auth/operations';
+import { currentUser } from 'redux/auth/operations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import Verify from 'pages/Verify';
 
 const Layout = lazy(() => import('./Layout'));
 const HomePage = lazy(() => import('pages/Home'));
@@ -18,7 +19,7 @@ export default function App() {
   const isCurrentUser = useSelector(selectIsCurrentUser);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(currentUser());
   }, [dispatch]);
 
   return isCurrentUser ? (
@@ -31,27 +32,28 @@ export default function App() {
             index
             element={
               <RestrictedRoute redirectTo='/contacts' component={<HomePage />} />
-            }>
-          </Route>
+            }/>
           <Route
             path='/register'
             element={
               <RestrictedRoute redirectTo='/contacts' component={<RegisterPage />} />
-            }>
-          </Route>
+            }/>
+
+          <Route
+            path='/register/:verifycationToken'
+            element={<Verify />}/>
+
           <Route
             path='/login'
             element={
               <RestrictedRoute redirectTo='/contacts' component={<LoginPage />} />
-            }>
-          </Route>
+            }/>
           <Route
             path='/contacts'
             element={
               <PrivateRoute redirectTo='/login' component={<ContactsPage />} />
-            }>
-          </Route>
-          <Route path='*' element={<Navigate to='/' />}></Route>
+            }/>
+          <Route path='*' element={<Navigate to='/' />}/>
         </Route>
       </Routes>
       {Loading.remove()}

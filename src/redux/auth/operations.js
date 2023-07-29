@@ -1,9 +1,9 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:3001/api/';
-axios.defaults.baseURL = 'https://react-phonebook-backend.onrender.com/api/';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/'; /** => Previous link to backend */
+// axios.defaults.baseURL = 'http://localhost:3001/api/'; /** => Link for development */
+axios.defaults.baseURL = 'https://react-phonebook-backend.onrender.com/api/'; /** => Actual link to backend */
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -22,6 +22,18 @@ export const register = createAsyncThunk(
             const res = await axios.post('/auth/signup', credentials);
             // After successful login, add the token to the HTTP header
             setAuthHeader(res.data.token);
+            return res.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response);
+        }
+    },
+);
+
+export const tokenVerification = createAsyncThunk(
+    'auth/tokenVerification',
+    async (credentials, thunkAPI) => {
+        try {
+            const res = await axios.get(`/auth/verify/${credentials}`);
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response);
@@ -56,8 +68,8 @@ export const logOut = createAsyncThunk(
     },
 );
 
-export const refreshUser = createAsyncThunk(
-    'auth/refresh',
+export const currentUser = createAsyncThunk(
+    'auth/current',
     async (_, thunkAPI) => {
         // Reading the token from the state via getState()
         const state = thunkAPI.getState();
@@ -84,9 +96,6 @@ export const resendMail = createAsyncThunk(
     async (credentials, thunkAPI) => {
         try {
             const res = await axios.post('/auth/verify', credentials);
-            // After successful login, add the token to the HTTP header
-            console.log(res)
-            setAuthHeader(res.data.token);
             return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response);
