@@ -87,6 +87,7 @@ export default function RegisterForm() {
             required={true}
             type="password"
             name="password"
+            inputProps={{minLength: 7}}
           />
           <Btn
             type="submit"
